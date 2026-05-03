@@ -7,25 +7,17 @@ export function Hero() {
   const status = isOpenNow();
   return (
     <section id="top" className="relative pt-28 pb-20 md:pb-32 overflow-hidden">
-      {/* Background blobs */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="absolute top-20 -left-20 w-96 h-96 rounded-full bg-mint-100 blur-3xl opacity-70" />
         <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] rounded-full bg-gold/20 blur-3xl" />
-        <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1" fill="#0f766e" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots)" />
-        </svg>
       </div>
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 grid md:grid-cols-2 gap-12 items-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          style={{ opacity: 0, willChange: "transform, opacity" }}
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 border border-teal-700/10 text-xs font-medium text-teal-700 mb-6">
             <span className={`w-2 h-2 rounded-full ${status.open ? "bg-green-500 animate-pulse" : "bg-rose"}`} />
@@ -59,7 +51,7 @@ export function Hero() {
             <a href={waLink()} className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-teal-700 text-white font-medium shadow-lg shadow-teal-700/25 hover:shadow-xl hover:-translate-y-0.5 transition-all">
               <MessageCircle size={18} /> Book on WhatsApp
             </a>
-            <a href={telLink()} className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white border border-teal-700/15 text-teal-900 font-medium hover:bg-mint-50 transition-all">
+            <a href={telLink()} className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white border border-teal-700/15 text-teal-900 font-medium hover:bg-mint-50 transition-colors">
               <Phone size={18} /> {clinic.contact.primaryPhone}
             </a>
           </div>
@@ -82,9 +74,10 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
+          initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          style={{ opacity: 0, willChange: "transform, opacity" }}
           className="relative"
         >
           <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-teal-900/20">
@@ -98,9 +91,10 @@ export function Hero() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.5, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            style={{ opacity: 0, willChange: "transform, opacity" }}
             className="absolute -left-4 sm:-left-10 top-10 glass rounded-2xl px-4 py-3 shadow-xl border border-white/40"
           >
             <div className="flex items-center gap-2.5">
@@ -118,9 +112,10 @@ export function Hero() {
             href={clinic.address.mapsUrl}
             target="_blank"
             rel="noreferrer"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 0.7, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            style={{ opacity: 0, willChange: "transform, opacity" }}
             className="absolute -right-2 sm:-right-6 bottom-16 glass rounded-2xl px-4 py-3 shadow-xl border border-white/40 max-w-[200px] hover:shadow-2xl hover:-translate-y-0.5 transition-all"
             aria-label="Open in Google Maps"
           >
