@@ -40,13 +40,20 @@ export function Hero() {
             <span className="font-semibold text-teal-900">{clinic.doctor.name}</span> — your trusted root canal & cosmetic specialist in Greater Noida.
           </p>
 
-          <div className="flex items-center gap-2 mb-8 text-sm">
+          <a
+            href={clinic.rating.url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 mb-8 text-sm group hover:opacity-80 transition-opacity"
+            aria-label="Read our Google reviews"
+          >
             <div className="flex items-center gap-0.5 text-gold">
               {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
             </div>
             <span className="font-semibold text-teal-900">{clinic.rating.value.toFixed(1)}</span>
-            <span className="text-teal-900/60">· {clinic.rating.count} reviews on {clinic.rating.source}</span>
-          </div>
+            <span className="text-teal-900/60">· {clinic.rating.count} reviews on Google</span>
+            <span className="text-teal-700 group-hover:translate-x-0.5 transition-transform">↗</span>
+          </a>
 
           <div className="flex flex-wrap gap-3 mb-10">
             <a href={waLink()} className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-teal-700 text-white font-medium shadow-lg shadow-teal-700/25 hover:shadow-xl hover:-translate-y-0.5 transition-all">
@@ -58,12 +65,19 @@ export function Hero() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {clinic.stats.map((s) => (
-              <div key={s.label}>
-                <div className="text-2xl sm:text-3xl font-display font-bold text-teal-700">{s.value}</div>
-                <div className="text-xs text-teal-900/60 uppercase tracking-wider">{s.label}</div>
-              </div>
-            ))}
+            {clinic.stats.map((s) => {
+              const inner = (
+                <>
+                  <div className="text-2xl sm:text-3xl font-display font-bold text-teal-700">{s.value}</div>
+                  <div className="text-xs text-teal-900/60 uppercase tracking-wider">{s.label}</div>
+                </>
+              );
+              return s.href ? (
+                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="block hover:opacity-75 transition-opacity">{inner}</a>
+              ) : (
+                <div key={s.label}>{inner}</div>
+              );
+            })}
           </div>
         </motion.div>
 
@@ -100,11 +114,15 @@ export function Hero() {
             </div>
           </motion.div>
 
-          <motion.div
+          <motion.a
+            href={clinic.address.mapsUrl}
+            target="_blank"
+            rel="noreferrer"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="absolute -right-2 sm:-right-6 bottom-16 glass rounded-2xl px-4 py-3 shadow-xl border border-white/40 max-w-[200px]"
+            className="absolute -right-2 sm:-right-6 bottom-16 glass rounded-2xl px-4 py-3 shadow-xl border border-white/40 max-w-[200px] hover:shadow-2xl hover:-translate-y-0.5 transition-all"
+            aria-label="Open in Google Maps"
           >
             <div className="flex items-start gap-2.5">
               <div className="w-9 h-9 rounded-full bg-gold/20 grid place-items-center text-gold shrink-0">
@@ -115,7 +133,7 @@ export function Hero() {
                 <div className="text-sm font-semibold text-teal-900 leading-snug">Greater Noida, Yusufpur</div>
               </div>
             </div>
-          </motion.div>
+          </motion.a>
         </motion.div>
       </div>
     </section>

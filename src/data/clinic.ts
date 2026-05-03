@@ -34,11 +34,11 @@ export const clinic = {
     { day: "Sat", open: "10:30", close: "20:00", closed: false },
     { day: "Sun", open: "10:30", close: "20:00", closed: false },
   ],
-  rating: { value: 5.0, count: 21, source: "JustDial" },
+  rating: { value: 5.0, count: 21, source: "JustDial", url: "https://share.google/dmy22Z7JkDimzQAX0" },
   stats: [
     { label: "Years of Care", value: "5+" },
     { label: "Happy Smiles", value: "2000+" },
-    { label: "Google Rating", value: "5.0★" },
+    { label: "Google Rating", value: "5.0★", href: "https://share.google/dmy22Z7JkDimzQAX0" },
     { label: "Painless Care", value: "100%" },
   ],
   services: [
