@@ -17,7 +17,7 @@ export function Gallery() {
             Our Clinic
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Step inside <span className="gradient-text italic">Pratishtha</span>.
+            A look <span className="gradient-text italic">inside our clinic</span>.
           </h2>
           <p className="text-teal-900/70 text-lg">
             A warm, welcoming space designed for your comfort — from the moment you walk in.

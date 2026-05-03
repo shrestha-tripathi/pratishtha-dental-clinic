@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import * as Icons from "lucide-react";
 import { clinic } from "../data/clinic";
+import { DentalIcon } from "./DentalIcons";
 
 export function Services() {
   return (
@@ -19,28 +19,25 @@ export function Services() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {clinic.services.map((s, i) => {
-            const Icon = (Icons[s.icon as keyof typeof Icons] as React.ComponentType<{ size?: number }>) ?? Icons.Sparkles;
-            return (
-              <motion.div
-                key={s.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: (i % 3) * 0.08 }}
-                className="group relative p-6 rounded-2xl bg-white border border-teal-700/5 hover:border-teal-700/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-mint-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-700 to-mint-500 grid place-items-center text-white mb-4 shadow-md group-hover:scale-110 transition-transform">
-                    <Icon size={22} />
-                  </div>
-                  <h3 className="text-lg font-display font-bold text-teal-900 mb-2">{s.title}</h3>
-                  <p className="text-sm text-teal-900/65 leading-relaxed">{s.desc}</p>
+          {clinic.services.map((s, i) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: (i % 3) * 0.08 }}
+              className="group relative p-6 rounded-2xl bg-white border border-teal-700/5 hover:border-teal-700/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-mint-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-700 to-mint-500 grid place-items-center text-white mb-4 shadow-md group-hover:scale-110 transition-transform">
+                  <DentalIcon name={s.icon} width={26} height={26} />
                 </div>
-              </motion.div>
-            );
-          })}
+                <h3 className="text-lg font-display font-bold text-teal-900 mb-2">{s.title}</h3>
+                <p className="text-sm text-teal-900/65 leading-relaxed">{s.desc}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
