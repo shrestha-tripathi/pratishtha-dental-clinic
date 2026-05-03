@@ -13,7 +13,7 @@ export const clinic = {
     primaryPhone: "+917800364268",
     secondaryPhone: "+917400364268",
     whatsapp: "917800364268",
-    email: "pratishthadentalclinic@gmail.com",
+    email: "tripathipratishtha65@gmail.com",
   },
   address: {
     line1: "Shop No. 6, Munnidevi School",
